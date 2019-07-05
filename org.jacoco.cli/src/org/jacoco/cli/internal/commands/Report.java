@@ -38,6 +38,7 @@ import org.jacoco.report.html.HTMLFormatter;
 import org.jacoco.report.xml.XMLFormatter;
 import org.kohsuke.args4j.Argument;
 import org.kohsuke.args4j.Option;
+import org.kohsuke.args4j.spi.MultiFileOptionHandler;
 
 /**
  * The <code>report</code> command.
@@ -47,10 +48,10 @@ public class Report extends Command {
 	@Argument(usage = "list of JaCoCo *.exec files to read", metaVar = "<execfiles>")
 	List<File> execfiles = new ArrayList<File>();
 
-	@Option(name = "--classfiles", usage = "location of Java class files", metaVar = "<path>", required = true)
+	@Option(name = "--classfiles", handler = MultiFileOptionHandler.class, usage = "location of Java class files", metaVar = "<path>", required = true)
 	List<File> classfiles = new ArrayList<File>();
 
-	@Option(name = "--sourcefiles", usage = "location of the source files", metaVar = "<path>")
+	@Option(name = "--sourcefiles", handler = MultiFileOptionHandler.class, usage = "location of the source files", metaVar = "<path>")
 	List<File> sourcefiles = new ArrayList<File>();
 
 	@Option(name = "--tabwith", usage = "tab stop width for the source pages (default 4)", metaVar = "<n>")
